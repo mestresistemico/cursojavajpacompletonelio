@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mestresistemico.cursojavajpacompletonelio.domain.Product;
 import com.mestresistemico.cursojavajpacompletonelio.repositories.ProductRepository;
-import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ObjectNotFoundException;
+import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ProductService {
@@ -23,6 +23,6 @@ public class ProductService {
 
 	public Product findById(Long id) {
 		Optional<Product> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 }

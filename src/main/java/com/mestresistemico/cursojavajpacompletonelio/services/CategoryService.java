@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mestresistemico.cursojavajpacompletonelio.domain.Category;
 import com.mestresistemico.cursojavajpacompletonelio.repositories.CategoryRepository;
-import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ObjectNotFoundException;
+import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class CategoryService {
@@ -23,6 +23,6 @@ public class CategoryService {
 
 	public Category findById(Long id) {
 		Optional<Category> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mestresistemico.cursojavajpacompletonelio.domain.User;
 import com.mestresistemico.cursojavajpacompletonelio.repositories.UserRepository;
-import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ObjectNotFoundException;
+import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class UserService {
@@ -23,7 +23,7 @@ public class UserService {
 
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	public User insert(User obj) {

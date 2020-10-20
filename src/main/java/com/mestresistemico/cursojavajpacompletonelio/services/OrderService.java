@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mestresistemico.cursojavajpacompletonelio.domain.Order;
 import com.mestresistemico.cursojavajpacompletonelio.repositories.OrderRepository;
-import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ObjectNotFoundException;
+import com.mestresistemico.cursojavajpacompletonelio.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class OrderService {
@@ -23,6 +23,6 @@ public class OrderService {
 
 	public Order findById(Long id) {
 		Optional<Order> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 }
