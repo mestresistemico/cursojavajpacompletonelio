@@ -37,5 +37,4 @@ public class ResourceExceptionHandler {
 		err.setTimestamp(Instant.now());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 	}
-
 }
